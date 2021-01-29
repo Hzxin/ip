@@ -6,19 +6,25 @@ import duke.task.Task;
 /**
  * Sub-class of Command that represents and execute the done instruction of user.
  */
-public class DoneCommand extends Command{
-	public DoneCommand(String task, String date) {
-		super("done", task, date, command -> {
-			return handleDone(task);
+public class DoneCommand extends Command {
 
-		});
+	/**
+	 * Create a DoneCommand object with given task and date.
+	 *
+	 * @param task the user task.
+	 * @param date date of the task.
+	 */
+	public DoneCommand(String task, String date) {
+		super("done", task, date, command -> handleDone(task));
 	}
 
 	/**
-	 * handle done command by marking the task as done.
-	 * @param task name of the user task.
+	 * This method handle the done instruction and return false.
+	 *
+	 * @param task user task.
+	 * @return boolean of false to indicate the program is not ending.
 	 */
-	private static final Boolean handleDone(String task) {
+	private static Boolean handleDone(String task) {
 		if (task.length() > 0) {
 			try {
 				int num = Integer.parseInt(task);

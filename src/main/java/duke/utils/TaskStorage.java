@@ -39,7 +39,7 @@ public class TaskStorage {
 		} catch (IOException err) {
 			DukeException.saveToFileError();
 		}
-		return Ui.SUCCESSFULSAVE;
+		return Ui.SUCCESSFUL_SAVE;
 	}
 
 	/**
@@ -48,27 +48,27 @@ public class TaskStorage {
 	 * @return the String display of a successful load.
 	 */
 	public static String loadFiles() {
-		String output = Ui.LOADFILE;
+		String output = Ui.LOAD_FILE;
 		System.out.println(output);
 		try {
 			File directory = new File(DIRECTORY);
 			if (!directory.exists()) {
-				System.out.println(Ui.NODIRECTORY);
+				System.out.println(Ui.NO_DIRECTORY);
 				directory.mkdir();
 				Ui.SLEEP();
 			}
 
 			File file = new File(FILEPATH);
 			if (!file.exists()) {
-				System.out.println(Ui.NOFILE);
+				System.out.println(Ui.NO_FILE);
 				file.createNewFile();
 				Ui.SLEEP();
 			}
 
 			if (file.length() == 0) {
 				Ui.SLEEP();
-				System.out.println(Ui.EMPTYFILE);
-				return Ui.EMPTYFILE;
+				System.out.println(Ui.EMPTY_FILE);
+				return Ui.EMPTY_FILE;
 			}
 
 			restoreTask(file);
@@ -77,10 +77,10 @@ public class TaskStorage {
 			System.out.println("IO error!: " + e.getMessage());
 		}
 
-		return Ui.SUCESSFULLOAD;
+		return Ui.SUCESSFUL_LOAD;
 	}
 
-	private static final void restoreTask(File file) throws IOException {
+	private static void restoreTask(File file) throws IOException {
 		Scanner sc = new Scanner(file);
 
 		while (sc.hasNext()) {

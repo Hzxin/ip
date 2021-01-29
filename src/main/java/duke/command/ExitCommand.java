@@ -5,10 +5,7 @@ package duke.command;
  */
 public class ExitCommand extends Command {
 	public ExitCommand(String task, String date) {
-		super("bye", task, date, command -> {
-			return handleBye(task, date);
-
-		});
+		super("bye", task, date, command -> handleBye(task, date));
 	}
 
 	/**
@@ -18,11 +15,8 @@ public class ExitCommand extends Command {
 	 * @param date date of the task that user key in.
 	 * @return a boolean of whether to exit the program.
 	 */
-	private static final boolean handleBye(String task, String date) {
-		if (task.equals("") && date.equals("")) {
-			return true;
-		}
-		return false;
+	private static boolean handleBye(String task, String date) {
+		return task.equals("") && date.equals("");
 	}
 
 }

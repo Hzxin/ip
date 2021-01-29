@@ -7,12 +7,10 @@ import duke.task.Task;
 /**
  * Sub-class of command that only represents and executes a delete instruction of a user.
  */
-public class DeleteCommand extends Command{
-	public DeleteCommand(String task, String date) {
-		super("delete", task, date, command -> {
-			return handleDelete(task, date);
+public class DeleteCommand extends Command {
 
-		});
+	public DeleteCommand(String task, String date) {
+		super("delete", task, date, command -> handleDelete(task, date));
 	}
 
 
@@ -21,7 +19,7 @@ public class DeleteCommand extends Command{
 	 * @param task user task in String.
 	 * @param date date of the task.
 	 */
-	private static final Boolean handleDelete(String task, String date) {
+	private static Boolean handleDelete(String task, String date) {
 		if (task.length() > 0 && date.equals("")) {
 			try {
 				int num = Integer.parseInt(task);
